@@ -4,7 +4,6 @@ using namespace std;
 
 struct professor
 {
-    string person[10];
     string firstname;
     string lastname;
     float height;
@@ -14,22 +13,24 @@ struct professor
 void display ( struct professor *person)
 {
    int max = (person[0].age + person[0].height);
+   int max_index = 0;
     
     for (int i=1; i<10; i++)
     {
-        if((person[i].age + person[i].height) > max)
+        int sum = person[i].age + person[i].height;
+        if(sum > max)
         {
-            cout << "\nFirst Name: " << person[i].firstname << endl;
-            cout << "Last Name: " << person[i].lastname << endl;
-        }
-        
-        else
-        {
-            cout << "First Name: " << person[0].firstname <<endl;
-            cout << "Last Name: " << person[0].lastname << endl;
+            max = sum;
+            max_index = i;
         }
     }
+    
+    cout << "First Name: " << person[max_index].firstname <<endl;
+    cout << "Last Name: " << person[max_index].lastname << endl;
 }
+ 
+ 
+
 
 int main()
 {
@@ -76,7 +77,6 @@ int main()
     person[9].age = 54;
     display (person);
 
-    
     return 0;
     
 }
